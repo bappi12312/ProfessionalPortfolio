@@ -1,32 +1,25 @@
 #!/usr/bin/env node
 
-// This is a custom build script for Netlify that only builds the client-side code
-// Run this script using: node netlify-build.js
+// This script runs before the Netlify build process to ensure proper configuration
 
-import { exec } from 'child_process';
-import { promises as fs } from 'fs';
+const fs = require('fs');
+const path = require('path');
 
-console.log('Starting Netlify build process...');
+// Make sure the build directory exists
+const distDir = path.join(__dirname, 'dist');
+if (!fs.existsSync(distDir)) {
+  fs.mkdirSync(distDir, { recursive: true });
+}
 
-// Run Vite build for the client side only
-exec('npm run build', async (error, stdout, stderr) => {
-  if (error) {
-    console.error(`Error during build: ${error.message}`);
-    process.exit(1);
-  }
-  
-  if (stderr) {
-    console.error(`Build errors: ${stderr}`);
-  }
-  
-  console.log(stdout);
-  console.log('Build completed successfully!');
-  
-  // Create a _redirects file for Netlify to handle client-side routing
-  try {
-    await fs.writeFile('dist/_redirects', '/* /index.html 200');
-    console.log('Created _redirects file for SPA routing');
-  } catch (err) {
-    console.error('Error creating _redirects file:', err);
-  }
-});
+// Make sure the public directory exists in dist
+const distPublicDir = path.join(distDir, 'public');
+if (!fs.existsSync(distPublicDir)) {
+  fs.mkdirSync(distPublicDir, { recursive: true });
+}
+
+// Create a _redirects file in the output directory
+const redirectsPath = path.join(distPublicDir, '_redirects');
+fs.writeFileSync(redirectsPath, '/* /index.html 200\n');
+
+console.log('✅ Netlify build preparation complete');
+console.log('- Created _redirects file for SPA routing');
