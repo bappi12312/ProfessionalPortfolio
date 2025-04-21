@@ -70,26 +70,26 @@ export default function ProjectsSection() {
   };
 
   const colorMap: Record<string, string> = {
-    "React": "bg-blue-100 text-blue-800",
-    "Node.js": "bg-green-100 text-green-800",
-    "MongoDB": "bg-yellow-100 text-yellow-800",
-    "Redux": "bg-purple-100 text-purple-800",
-    "WebSocket": "bg-indigo-100 text-indigo-800",
-    "Redis": "bg-red-100 text-red-800",
-    "Express": "bg-green-100 text-green-800",
-    "Next.js": "bg-blue-100 text-blue-800",
-    "TypeScript": "bg-blue-100 text-blue-800",
-    "PostgreSQL": "bg-blue-100 text-blue-800",
-    "Tailwind CSS": "bg-purple-100 text-purple-800",
-    "Docker": "bg-gray-100 text-gray-800",
-    "C++": "bg-gray-100 text-gray-800",
-    "JavaScript": "bg-yellow-100 text-yellow-800",
-    "Canvas API": "bg-purple-100 text-purple-800",
-    "API Integration": "bg-green-100 text-green-800"
+    "React": "bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300",
+    "Node.js": "bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300",
+    "MongoDB": "bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-300",
+    "Redux": "bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-300",
+    "WebSocket": "bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-300",
+    "Redis": "bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300",
+    "Express": "bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300",
+    "Next.js": "bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300",
+    "TypeScript": "bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300",
+    "PostgreSQL": "bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300",
+    "Tailwind CSS": "bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-300",
+    "Docker": "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300",
+    "C++": "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300",
+    "JavaScript": "bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-300",
+    "Canvas API": "bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-300",
+    "API Integration": "bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300"
   };
 
   return (
-    <section id="projects" className="py-20 bg-white">
+    <section id="projects" className="py-20 bg-background dark:bg-slate-900">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -97,8 +97,8 @@ export default function ProjectsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold mb-2 text-center">My Projects</h2>
-          <p className="text-gray-600 mb-12 text-center max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold mb-2 text-center dark:text-white">My Projects</h2>
+          <p className="text-gray-600 dark:text-gray-300 mb-12 text-center max-w-2xl mx-auto">
             Here are some of the noteworthy projects I've worked on, showcasing my technical skills and problem-solving abilities.
           </p>
         </motion.div>
@@ -116,11 +116,11 @@ export default function ProjectsSection() {
               className="rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2"
               variants={item}
             >
-              <Card className="h-full flex flex-col">
-                <div className="h-48 overflow-hidden bg-gray-200">
-                  <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+              <Card className="h-full flex flex-col bg-white dark:bg-gray-900 border dark:border-gray-800">
+                <div className="h-48 overflow-hidden bg-gray-200 dark:bg-gray-700">
+                  <div className="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
                     <svg
-                      className="w-16 h-16 text-gray-400"
+                      className="w-16 h-16 text-gray-400 dark:text-gray-500"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -130,8 +130,8 @@ export default function ProjectsSection() {
                 </div>
                 
                 <CardContent className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4 flex-grow">{project.description}</p>
+                  <h3 className="text-xl font-bold mb-2 dark:text-white">{project.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow">{project.description}</p>
                   
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech, techIndex) => (
@@ -145,10 +145,10 @@ export default function ProjectsSection() {
                   </div>
                   
                   <div className="flex justify-between">
-                    <a href={project.demoLink} className="text-primary hover:text-blue-700 font-medium transition-colors duration-300 flex items-center">
+                    <a href={project.demoLink} className="text-primary hover:text-blue-700 dark:hover:text-blue-400 font-medium transition-colors duration-300 flex items-center">
                       <ArrowUpRight className="mr-1 h-4 w-4" /> Live Demo
                     </a>
-                    <a href={project.codeLink} className="text-gray-700 hover:text-black font-medium transition-colors duration-300 flex items-center">
+                    <a href={project.codeLink} className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white font-medium transition-colors duration-300 flex items-center">
                       <Github className="mr-1 h-4 w-4" /> Code
                     </a>
                   </div>
@@ -161,7 +161,7 @@ export default function ProjectsSection() {
         <div className="text-center mt-12">
           <motion.a 
             href="#"
-            className="inline-flex items-center bg-white border border-primary text-primary hover:bg-blue-50 font-medium py-2 px-6 rounded-md transition duration-300 shadow-sm hover:shadow-md"
+            className="inline-flex items-center bg-background dark:bg-gray-800 border border-primary text-primary hover:bg-primary/10 dark:hover:bg-primary/20 font-medium py-2 px-6 rounded-md transition duration-300 shadow-sm hover:shadow-md"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

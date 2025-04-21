@@ -73,7 +73,7 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-background dark:bg-slate-900">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -81,8 +81,8 @@ export default function ContactSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold mb-2 text-center">Get In Touch</h2>
-          <p className="text-gray-600 mb-12 text-center max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold mb-2 text-center dark:text-white">Get In Touch</h2>
+          <p className="text-gray-600 dark:text-gray-300 mb-12 text-center max-w-2xl mx-auto">
             Feel free to reach out to me for collaboration, job opportunities, or just to say hello!
           </p>
         </motion.div>
@@ -95,8 +95,8 @@ export default function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="bg-gray-50 rounded-xl p-8 h-full">
-              <h3 className="text-xl font-bold mb-6">Contact Information</h3>
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 h-full">
+              <h3 className="text-xl font-bold mb-6 dark:text-white">Contact Information</h3>
               
               <ul className="space-y-4">
                 {contactInfo.map((item, index) => (
@@ -108,17 +108,17 @@ export default function ContactSection() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                   >
-                    <div className="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full text-primary">
+                    <div className="w-10 h-10 flex items-center justify-center bg-blue-100 dark:bg-blue-900 rounded-full text-primary">
                       <item.icon size={18} />
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-800">{item.title}</h4>
+                      <h4 className="font-medium text-gray-800 dark:text-white">{item.title}</h4>
                       {item.link ? (
                         <a href={item.link} className="text-primary hover:underline">
                           {item.content}
                         </a>
                       ) : (
-                        <p className="text-gray-600">{item.content}</p>
+                        <p className="text-gray-600 dark:text-gray-300">{item.content}</p>
                       )}
                     </div>
                   </motion.li>
@@ -135,58 +135,58 @@ export default function ContactSection() {
             transition={{ duration: 0.5 }}
           >
             <form 
-              className="bg-white rounded-xl shadow-md p-8"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-8"
               onSubmit={handleSubmit(onSubmit)}
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
                     Name
                   </label>
                   <Input
                     id="name"
                     placeholder="Your name"
                     {...register("name")}
-                    className={errors.name ? "border-red-500" : ""}
+                    className={errors.name ? "border-red-500" : "border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"}
                   />
                   {errors.name && (
-                    <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
+                    <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.name.message}</p>
                   )}
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
                     Email
                   </label>
                   <Input
                     id="email"
                     placeholder="Your email"
                     {...register("email")}
-                    className={errors.email ? "border-red-500" : ""}
+                    className={errors.email ? "border-red-500" : "border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"}
                   />
                   {errors.email && (
-                    <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
+                    <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.email.message}</p>
                   )}
                 </div>
               </div>
               
               <div className="mb-6">
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
                   Subject
                 </label>
                 <Input
                   id="subject"
                   placeholder="Message subject"
                   {...register("subject")}
-                  className={errors.subject ? "border-red-500" : ""}
+                  className={errors.subject ? "border-red-500" : "border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"}
                 />
                 {errors.subject && (
-                  <p className="mt-1 text-sm text-red-500">{errors.subject.message}</p>
+                  <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.subject.message}</p>
                 )}
               </div>
               
               <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
                   Message
                 </label>
                 <Textarea
@@ -194,10 +194,10 @@ export default function ContactSection() {
                   rows={4}
                   placeholder="Your message"
                   {...register("message")}
-                  className={errors.message ? "border-red-500" : ""}
+                  className={errors.message ? "border-red-500" : "border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"}
                 />
                 {errors.message && (
-                  <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>
+                  <p className="mt-1 text-sm text-red-500 dark:text-red-400">{errors.message.message}</p>
                 )}
               </div>
               

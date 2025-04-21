@@ -127,7 +127,7 @@ export default function NavBar({ activeSection }: NavBarProps) {
                   className={`nav-link py-3 px-4 font-medium text-lg rounded-md transition-all ${
                     activeSection === link.href.substring(1) 
                     ? 'bg-primary/10 text-primary font-semibold' 
-                    : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                    : 'text-foreground dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                   initial={{ opacity: 0, y: 20 }}
