@@ -3,7 +3,7 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-20 bg-background dark:bg-slate-900">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <motion.div 
@@ -14,10 +14,10 @@ export default function AboutSection() {
             transition={{ duration: 0.5 }}
           >
             <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 bg-gray-200 rounded-lg overflow-hidden">
+              <div className="w-64 h-64 md:w-80 md:h-80 bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden">
                 {/* Use SVG portrait instead of image */}
                 <svg
-                  className="w-full h-full text-gray-400"
+                  className="w-full h-full text-gray-400 dark:text-gray-500"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                   fill="currentColor"
@@ -37,20 +37,20 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl font-bold mb-6 inline-block relative">
+            <h2 className="text-3xl font-bold mb-6 inline-block relative dark:text-white">
               About Me
               <span className="absolute bottom-0 left-0 w-1/3 h-1 bg-primary"></span>
             </h2>
             
-            <p className="text-gray-700 mb-4">
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
               I am a passionate full-stack developer with extensive experience in building modern web applications. My journey in software development began with C++ and data structures, which gave me a strong foundation in algorithmic thinking and problem-solving.
             </p>
             
-            <p className="text-gray-700 mb-4">
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
               Over the years, I've developed expertise in both front-end and back-end technologies, allowing me to create comprehensive solutions from database design to user interface development.
             </p>
             
-            <p className="text-gray-700 mb-6">
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
               My multilingual background helps me communicate effectively with global teams and clients, bridging cultural gaps in the development process.
             </p>
             

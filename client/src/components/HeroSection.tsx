@@ -21,7 +21,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center py-20 bg-gradient-to-b from-blue-50 to-light">
+    <section id="hero" className="min-h-screen flex items-center justify-center py-20 bg-gradient-to-b from-slate-50 to-background dark:from-slate-900 dark:to-background">
       <div className="container mx-auto px-4 pt-16">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <div className="lg:w-1/2 mb-12 lg:mb-0">
@@ -35,7 +35,7 @@ export default function HeroSection() {
             </motion.h1>
             
             <motion.p 
-              className="text-xl text-gray-600 mb-8"
+              className="text-xl text-gray-600 dark:text-gray-300 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -57,7 +57,7 @@ export default function HeroSection() {
               </a>
               <a 
                 href="#contact" 
-                className="bg-white border border-primary text-primary hover:bg-blue-50 font-medium py-2 px-6 rounded-md transition duration-300 shadow-sm hover:shadow-md"
+                className="bg-background dark:bg-gray-800 border border-primary text-primary hover:bg-primary/10 font-medium py-2 px-6 rounded-md transition duration-300 shadow-sm hover:shadow-md"
               >
                 Contact Me
               </a>
@@ -71,10 +71,10 @@ export default function HeroSection() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="absolute inset-2 bg-light rounded-full flex items-center justify-center">
+              <div className="absolute inset-2 bg-background dark:bg-slate-900 rounded-full flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-6xl mb-2">👨‍💻</div>
-                  <p className="text-xl font-semibold text-dark">Full-Stack Developer</p>
+                  <p className="text-xl font-semibold">Full-Stack Developer</p>
                 </div>
               </div>
             </motion.div>
@@ -82,12 +82,12 @@ export default function HeroSection() {
         </div>
         
         <div className="mt-16 md:mt-24 text-center">
-          <p className="text-gray-500 mb-4">Tech Stack</p>
+          <p className="text-gray-500 dark:text-gray-400 mb-4">Tech Stack</p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             {techIcons.map((tech, index) => (
               <motion.div 
                 key={index}
-                className="p-2 md:p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+                className="p-2 md:p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 * index }}
@@ -102,7 +102,7 @@ export default function HeroSection() {
         <div className="mt-12 md:mt-20 flex justify-center">
           <a 
             href="#about" 
-            className="text-gray-500 hover:text-primary transition-colors duration-300"
+            className="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-300"
           >
             <motion.div
               animate={{ y: [0, 10, 0] }}
