@@ -1,0 +1,13 @@
+[build]
+  command = "vite build"
+  publish = "dist"
+
+# Handle SPA routing for client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Enable HTTPS
+[https]
+  force = true
