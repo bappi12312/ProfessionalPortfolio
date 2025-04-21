@@ -1,5 +1,5 @@
 [build]
-  command = "node netlify-build.js && vite build"
+  command = "bash netlify-build.sh"
   publish = "dist/public"
 
 # Handle SPA routing for client-side routing

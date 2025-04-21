@@ -1,92 +1,92 @@
 # Deploying Your Portfolio to Netlify
 
-This document provides instructions for deploying your portfolio project to Netlify.
+This document provides instructions for deploying your portfolio project to Netlify, specifically tailored for this React/Vite portfolio application.
 
 ## Prerequisites
 
 - A [Netlify](https://www.netlify.com/) account (free tier is fine)
 - Your project code in a Git repository (GitHub, GitLab, or Bitbucket)
 
+## Important Files for Deployment
+
+The following files in your project are essential for successful deployment:
+
+1. `netlify.toml` - Configuration file for Netlify deployment settings
+2. `client/_redirects` - Handles SPA routing (prevents 404 errors)
+3. `netlify-build.sh` - Custom build script for Netlify
+
 ## Deployment Steps
 
-### Option 1: Deploy via Netlify UI (Recommended for Beginners)
+### Step 1: Push your latest code to GitHub
 
-1. **Push your code to GitHub or another Git provider**:
-   Make sure your code is committed and pushed to a repository.
+Make sure all your recent changes are committed and pushed to your repository.
 
-2. **Log in to Netlify**:
+### Step 2: Deploy via Netlify UI
+
+1. **Log in to Netlify**:
    Go to [netlify.com](https://www.netlify.com/) and log in to your account.
 
-3. **Create a new site**:
+2. **Create a new site**:
    Click on "New site from Git" on your Netlify dashboard.
 
-4. **Connect to your Git provider**:
+3. **Connect to your Git provider**:
    Select your Git provider (GitHub, GitLab, or Bitbucket) and authorize Netlify to access your repositories.
 
-5. **Select your repository**:
+4. **Select your repository**:
    Choose the repository containing your portfolio project.
 
-6. **Configure build settings**:
+5. **Configure build settings**:
    - **Branch to deploy**: `main` (or your preferred branch)
-   - **Build command**: `vite build`
-   - **Publish directory**: `dist`
+   - **Build command**: `bash netlify-build.sh`
+   - **Publish directory**: `dist/public`
+
+6. **Advanced build settings** (important!):
+   Click "Show advanced" and add the following environment variable:
+   - Key: `CI`
+   - Value: `false`
 
 7. **Deploy site**:
    Click "Deploy site" and wait for the build process to complete.
 
-8. **Configure custom domain (optional)**:
-   Once deployed, you can set up a custom domain by going to Site settings > Domain management.
+## Troubleshooting 404 Errors
 
-### Option 2: Deploy via Netlify CLI
+If you're still seeing 404 errors after deployment, follow these steps:
 
-1. **Install Netlify CLI**:
-   ```bash
-   npm install netlify-cli -g
-   ```
+1. **Check your _redirects file**:
+   Make sure the file exists at the root of your published site. You can verify this by:
+   - Going to your Netlify dashboard
+   - Selecting your site
+   - Clicking "Deploys" > Latest deploy > "Files"
+   - Look for a `_redirects` file in the root
 
-2. **Log in to Netlify via CLI**:
-   ```bash
-   netlify login
-   ```
+2. **Add manual redirect rules in Netlify**:
+   - Go to Site settings > Domain management > Custom domains
+   - Scroll down to "Custom domain redirect"
+   - Add a rule:
+     - From: `/*`
+     - To: `/index.html`
+     - Status: `200`
+     - Force: checked
 
-3. **Initialize Netlify in your project**:
-   ```bash
-   netlify init
-   ```
+3. **Redeploy with clear cache**:
+   - Go to Deploys in your Netlify dashboard
+   - Click "Trigger deploy" > "Clear cache and deploy site"
 
-4. **Configure your build settings as prompted**:
-   - Build command: `vite build`
-   - Publish directory: `dist`
+## Testing Your Deployment
 
-5. **Deploy your site**:
-   ```bash
-   netlify deploy --prod
-   ```
+After deploying, test your site by:
+1. Visiting the main page
+2. Refreshing the page to ensure it loads correctly
+3. Testing navigation between different sections
+4. Testing the site on mobile devices
 
-## Troubleshooting
+## Custom Domain (Optional)
 
-### If your site shows a blank page or 404 error:
-Make sure your `public/_redirects` file contains the following line to handle client-side routing:
-```
-/* /index.html 200
-```
-
-### If your build fails:
-Check the build logs in Netlify to identify the issue. Common problems include:
-- Missing dependencies
-- Build command errors
-- Environment variables not set
-
-## Environment Variables
-
-If your portfolio needs environment variables (like API keys), you can set them in Netlify:
-1. Go to Site settings > Build & deploy > Environment
-2. Add the required environment variables
-
-## Continuous Deployment
-
-Netlify automatically rebuilds and redeploys your site when you push changes to your Git repository. No further configuration is needed for continuous deployment.
+To set up a custom domain:
+1. Go to Site settings > Domain management
+2. Click "Add custom domain"
+3. Follow the instructions to configure your domain
 
 ---
 
-Enjoy your newly deployed portfolio website!
+If you encounter any issues, check the Netlify deployment logs for specific error messages and troubleshooting guidance.
