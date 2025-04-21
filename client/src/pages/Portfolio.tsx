@@ -6,6 +6,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import LanguagesSection from "@/components/LanguagesSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import MouseFollower from "@/components/MouseFollower";
 import { useEffect, useState } from "react";
 
 export default function Portfolio() {
@@ -37,7 +38,8 @@ export default function Portfolio() {
   }, [activeSection]);
 
   return (
-    <div className="bg-light text-dark">
+    <div className="bg-background text-foreground transition-colors duration-300">
+      <MouseFollower />
       <NavBar activeSection={activeSection} />
       <HeroSection />
       <AboutSection />
